@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sashank Sahil | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bodoni-style font -->
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
+    }
+
+    body {
+      background: #050816;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      background: rgba(5, 8, 22, 0.9);
+      z-index: 10;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: "Bodoni Moda", "Times New Roman", serif;
+    }
+
+    nav a {
+      margin-left: 18px;
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    .hero {
+      padding: 80px 40px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(260px, 1.2fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      opacity: 0.85;
+      margin-bottom: 20px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      opacity: 0.85;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #1e293b, #020617);
+      border-radius: 18px;
+      padding: 20px 22px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-card h3 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-card p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-bottom: 10px;
+    }
+
+    .hero-card small {
+      font-size: 0.8rem;
+      opacity: 0.75;
+      display: block;
+      margin-top: 6px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 40px 40px;
+    }
+
+    section {
+      margin-top: 40px;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.75;
+      margin-bottom: 20px;
+    }
+
+    /* Skills */
+    ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.9rem;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      opacity: 0.9;
+    }
+
+    .skills-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px 30px;
+    }
+
+    .skills-columns h4 {
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+
+    .skills-columns p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* Projects flip cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .flip-card {
+      background: transparent;
+      perspective: 1000px;
+      height: 220px;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: left;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-face {
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 16px 18px;
+      border: 1px solid rgba(148, 163, 184, 0.27);
+      background: linear-gradient(135deg, #020617, #020617);
+      backface-visibility: hidden;
+    }
+
+    .flip-front h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .flip-front span {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .flip-back {
+      transform: rotateY(180deg);
+      font-size: 0.9rem;
+      opacity: 0.9;
+      overflow-y: auto;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    /* Contact */
+    .contact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      align-items: start;
+    }
+
+    .contact p {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      margin-bottom: 10px;
+    }
+
+    .contact-info span {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 40px 30px;
+      font-size: 0.8rem;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 14px 16px;
+      }
+      .hero {
+        padding: 70px 16px 30px;
+        grid-template-columns: 1fr;
+      }
+      main {
+        padding: 10px 16px 30px;
+      }
+      nav {
+        display: none;
+      }
+      .flip-card {
+        height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sashank Sahil</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="hero-tag">B.Tech CSE’25 · Mumbai</div>
+      <h2 class="hero-title">Python Developer · AI · Machine Learning · Data Analyst</h2>
+      <p class="hero-subtitle">
+        I enjoy building practical projects with Python, data, automation and
+        machine learning, like crime rate prediction tools, Discord bots,
+        speech translation apps and simple backend systems. I’m open to
+        internships and IT graduate roles.
+      </p>
+      <div class="hero-pill">
+        <div class="pill">Python</div>
+        <div class="pill">SQL</div>
+        <div class="pill">Data Analytics</div>
+        <div class="pill">AI/ML</div>
+        <div class="pill">NLP</div>
+        <div class="pill">Backend Systems</div>
+        <div class="pill">Power BI</div>
+        <div class="pill">Excel</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>About Me</h3>
+      <p>
+        I’m a B.Tech CSE student with experience in Python and backend 
+        development. I’ve worked on projects like crime rate prediction, 
+        a Discord bot, a speech translator with GUI, and small 
+        applications including a contact book, to-do app, and basic games.
+      </p>
+      <p>
+        I like working on real problems, connecting Python with databases, and
+        using data and ML to create useful, working solutions.
+      </p>
+      <small>Open to: internships · IT graduate roles</small>
+    </div>
+  </section>
+
+  <main>
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <p class="section-subtitle">
+        A quick overview of what I do and what I enjoy working on.
+      </p>
+      <p style="font-size: 0.95rem; opacity: 0.9;">
+        I’m building my foundations in Python, SQL, data analytics and machine
+        learning through academic work and self-driven projects. Some of my
+        key work includes a crime rate prediction model, a Discord server bot,
+        a speech translator into multiple languages with a GUI, and the backend
+        of an online library management system using MySQL and Python
+        (mysql.connector).
+        <br /><br />
+        I enjoy converting raw data into insights, automating workflows and
+        designing simple, clean backends that just work. I’m actively looking
+        for internships and IT graduate roles where I can keep learning and
+        contribute to real-world projects.
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-subtitle">
+        Tools and technologies I have worked with.
+      </p>
+
+      <div class="skills-columns">
+        <div>
+          <h4>Languages</h4>
+          <p>Python, SQL</p>
+        </div>
+        <div>
+          <h4>Data & ML</h4>
+          <p>Pandas, NumPy, Scikit-learn, AI/ML, NLP, Power BI</p>
+        </div>
+        <div>
+          <h4>Backend & Tools</h4>
+          <p>Flask (Basics), APIs, Git, ETL (Basics), MySQL</p>
+        </div>
+        <div>
+          <h4>Other</h4>
+          <p>Excel (VLOOKUP, Pivot, Filter), Data Visualization, Problem Solving, Project Workflows</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <p class="section-subtitle">Academic background and qualifications.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 10px;">
+
+        <!-- B.Tech -->
+        <div style="background: rgba(148,163,184,0.07); padding: 16px 18px; border-radius: 16px; border: 1px solid rgba(148,163,184,0.25);">
+          <strong style="font-size: 1rem;">B.Tech in Computer Science Engineering</strong><br>
+          <span style="opacity: 0.8;">Bharati Vidyapeeth Deemed To Be University</span><br>
+          <span style="opacity: 0.8;">Department of Engineering & Technology, Navi Mumbai</span><br><br>
+          <small style="opacity: 0.7;">Completed · 2021 – 2025</small>
+        </div>
+
+        <!-- 12th -->
+        <div style="background: rgba(148,163,184,0.07); padding: 16px 18px; border-radius: 16px; border: 1px solid rgba(148,163,184,0.25);">
+          <strong style="font-size: 1rem;">12th / HSC</strong><br>
+          <span style="opacity: 0.8;">CBSE — Kendriya Vidyalaya No. II, Port Blair</span><br><br>
+          <small style="opacity: 0.7;">Completed · June 2021</small>
+        </div>
+
+        <!-- 10th -->
+        <div style="background: rgba(148,163,184,0.07); padding: 16px 18px; border-radius: 16px; border: 1px solid rgba(148,163,184,0.25);">
+          <strong style="font-size: 1rem;">10th / SSC</strong><br>
+          <span style="opacity: 0.8;">CBSE — Kendriya Vidyalaya Anna Nagar, Chennai</span><br><br>
+          <small style="opacity: 0.7;">Completed · June 2019</small>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <p class="section-subtitle">Work and internship experience.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 10px;">
+
+        <div style="background: rgba(148,163,184,0.07); padding: 16px 18px; border-radius: 16px; border: 1px solid rgba(148,163,184,0.25);">
+          <strong style="font-size: 1rem;">Python Developer Internship</strong><br>
+          <span style="opacity: 0.85;">Encryptix, Mumbai</span><br><br>
+          <small style="opacity: 0.75;">Jul 2024 – Aug 2024</small>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">
+        Hover on a project card to flip and see details.
+      </p>
+
+      <div class="grid-2">
+        <!-- Crime Rate Prediction -->
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <h3>Crime Rate Prediction using Machine Learning</h3>
+              <span>Python · Flask · Pandas · NumPy · Matplotlib · Scikit-learn</span>
+            </div>
+            <div class="flip-face flip-back">
+              Built a crime rate prediction project using historical crime data.
+              Cleaned and prepared the data with Pandas and NumPy, then created
+              features based on time, location and crime type. Trained a Random
+              Forest model with Scikit-learn to predict crime patterns and used
+              Matplotlib to visualise results through bar graphs, heatmaps and
+              other plots. Integrated the model with a simple Flask app so the
+              predictions and visualisations can be viewed in a browser.
+              <div class="tags">
+                <div class="tag">Random Forest</div>
+                <div class="tag">Flask</div>
+                <div class="tag">EDA</div>
+                <div class="tag">Visualization</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Discord Server Bot -->
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <h3>Discord Server Bot</h3>
+              <span>Python · Discord API</span>
+            </div>
+            <div class="flip-face flip-back">
+              Developed a Discord bot in Python to automate server tasks and
+              keep the community active. Implemented commands for information,
+              simple moderation and fun interactions. This project strengthened
+              my understanding of APIs, event-driven programming and handling
+              real-time user messages.
+              <div class="tags">
+                <div class="tag">APIs</div>
+                <div class="tag">Automation</div>
+                <div class="tag">Event-driven</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speech Translator GUI -->
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <h3>Speech Translator into Multiple Languages (GUI)</h3>
+              <span>Python · GUI · NLP · CSV</span>
+            </div>
+            <div class="flip-face flip-back">
+              Built a speech translation application in Python with a graphical
+              interface. Captured the user’s speech, converted it to text and
+              translated it into multiple languages. Used CSV files to store or
+              manage language data/mappings, and focused on a simple, clear GUI
+              so non-technical users can use it comfortably.
+              <div class="tags">
+                <div class="tag">NLP</div>
+                <div class="tag">Speech-to-Text</div>
+                <div class="tag">GUI</div>
+                <div class="tag">CSV</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Online Library Management Backend -->
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <h3>Online Library Management System (Backend)</h3>
+              <span>Python · MySQL · mysql.connector</span>
+            </div>
+            <div class="flip-face flip-back">
+              Worked as the backend developer for an online library management
+              system. Connected Python to MySQL using mysql.connector and
+              implemented operations like adding books, managing users and
+              tracking issued/returned books. Focused on database design and
+              reliable CRUD operations.
+              <div class="tags">
+                <div class="tag">Backend</div>
+                <div class="tag">MySQL</div>
+                <div class="tag">CRUD</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Book -->
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <h3>Contact Book Application</h3>
+              <span>Python · GUI</span>
+            </div>
+            <div class="flip-face flip-back">
+              Developed a contact management app to store, search, update and
+              delete user details. Focused on clean data handling, simple user
+              flows and efficient record management.
+              <div class="tags">
+                <div class="tag">CRUD</div>
+                <div class="tag">Backend Logic</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- To-Do List -->
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <h3>To-Do List App</h3>
+              <span>Python · GUI</span>
+            </div>
+            <div class="flip-face flip-back">
+              Created a GUI-based to-do app that lets users add, delete and
+              update tasks. This helped me understand state management, basic
+              UI layout and user interaction in Python.
+              <div class="tags">
+                <div class="tag">GUI</div>
+                <div class="tag">Productivity</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rock-Paper-Scissors -->
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <h3>Rock-Paper-Scissors Game</h3>
+              <span>Python</span>
+            </div>
+            <div class="flip-face flip-back">
+              Implemented a simple Rock-Paper-Scissors game with score
+              tracking. Practised conditional logic, loops and structuring
+              small Python programs in a clean way.
+              <div class="tags">
+                <div class="tag">Game Logic</div>
+                <div class="tag">Python Basics</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simple Calculator -->
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <h3>Simple Calculator</h3>
+              <span>Python</span>
+            </div>
+            <div class="flip-face flip-back">
+              Built a basic calculator that performs addition, subtraction,
+              multiplication and division. Practised working with user input,
+              functions and handling simple arithmetic operations in Python.
+              <div class="tags">
+                <div class="tag">Python Basics</div>
+                <div class="tag">Functions</div>
+                <div class="tag">User Input</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <section id="certifications">
+      <h2 class="section-title">Certifications</h2>
+      <p class="section-subtitle">
+        Courses and certifications I have completed.
+      </p>
+      <ul>
+        <li>• Deep Learning 2023: Neural Network, AI and ChatGPT (Udemy)</li>
+        <li>• Oracle Cloud Infrastructure Data Science Professional (Oracle)</li>
+        <li>• 2023 Complete Python Bootcamp From Zero to Hero (Udemy)</li>
+        <li>• Android App Using Kotlin (Spoken Tutorial Project, IIT Bombay)</li>
+        <li>• Foundation Training and Certification on Cyber Security (HCL Tech)</li>
+        <li>
+          • Certificate of Appreciation For Conducting 3-Day Python Workshop on
+          Problem Solving Using Python (BVDUDET, 2024)
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">
+        Feel free to reach out for opportunities, collaborations or questions.
+      </p>
+
+      <div class="contact">
+        <div>
+          <p>
+            I’m actively looking for roles where I can learn, contribute and
+            grow in Python development, data analytics and machine learning.
+            The best way to reach me is through email or LinkedIn.
+          </p>
+        </div>
+        <div class="contact-info">
+          <span><strong>Location:</strong> Mumbai, India</span>
+          <span><strong>Email:</strong> <a href="mailto:sahilsashank58@gmail.com">sahilsashank58@gmail.com</a></span>
+          <span><strong>LinkedIn:</strong>
+            <a href="https://www.linkedin.com/in/iamsashanksahil" target="_blank">
+              linkedin.com/in/iamsashanksahil
+            </a>
+          </span>
+          <span><strong>GitHub:</strong>
+            <a href="https://github.com/iamsashanksahil" target="_blank">
+              github.com/iamsashanksahil
+            </a>
+          </span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Sashank Sahil · Portfolio
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
