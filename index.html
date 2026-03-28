@@ -5,101 +5,184 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sashank Sahil Portfolio</title>
 
+<link href="https://fonts.cdnfonts.com/css/lorimer-no-2" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI, sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+
+html,body{overflow-x:hidden}
 
 body{
   background:#111827;
   color:#e5e7eb;
-  line-height:1.6;
+  font-family:'Lorimer No 2',sans-serif;
 }
 
+/* TOP BAR */
+.topbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 20px;
+  z-index:9999;
+}
+
+/* Name */
+.name{
+  font-size:28px;
+  font-weight:bold;
+}
+
+/* NAV */
+.nav{
+  background:#020617;
+  padding:6px 10px;
+  border:1px solid #374151;
+  border-radius:8px;
+  font-size:12px;
+  display:flex;
+  gap:6px;
+}
+
+.nav a{
+  color:#60a5fa;
+  text-decoration:none;
+}
+
+/* Container */
 .container{
   max-width:1100px;
   margin:auto;
-  padding:20px;
+  padding:80px 15px 20px;
 }
 
-/* Boxes */
-.card, .exp-box, .edu-box{
+/* Cards */
+.card{
   background:#1f2933;
   border:1px solid #374151;
   border-radius:12px;
-  padding:18px;
-  margin-bottom:20px;
+  padding:16px;
+  margin-bottom:18px;
   overflow:hidden;
 }
 
-/* Header */
-.header{
-  text-align:center;
-  padding:30px;
-  background:#1f2933;
-  border:1px solid #374151;
-  border-radius:12px;
-  margin-bottom:20px;
-}
-
-/* About */
-.about{
-  border-left:4px solid #6b7280;
-}
-
-/* Grid */
-.grid-2{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-@media(max-width:768px){
-  .grid-2{grid-template-columns:1fr}
+/* Text safety */
+p,li{
+  word-wrap:break-word;
+  overflow-wrap:break-word;
 }
 
 /* Lists */
 ul{
-  padding-left:18px;
-  margin-top:10px;
-}
-li{
-  margin-bottom:6px;
-  word-wrap:break-word;
+  padding-left:24px;
+  margin-top:8px;
 }
 
-/* Projects */
+/* EXPERIENCE */
+.exp-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+@media(max-width:768px){
+  .exp-grid{grid-template-columns:1fr}
+}
+
+.point-box{
+  background:#020617;
+  border:1px solid #374151;
+  border-radius:8px;
+  padding:8px;
+  margin-top:6px;
+  font-size:13px;
+}
+
+/* PROJECTS */
 .projects{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
 }
+
 .flip{perspective:1000px}
+
 .flip-inner{
   position:relative;
-  width:100%;
-  height:260px;
-  transition:transform 0.6s;
+  height:200px;
   transform-style:preserve-3d;
+  transition:0.6s;
 }
-.flip:hover .flip-inner{transform:rotateY(180deg)}
 
-.flip-front, .flip-back{
+.flip:hover .flip-inner{
+  transform:rotateY(180deg);
+}
+
+.flip-front,.flip-back{
   position:absolute;
   width:100%;
   height:100%;
-  backface-visibility:hidden;
   border-radius:10px;
-  padding:15px;
   border:1px solid #374151;
+  padding:10px;
+  backface-visibility:hidden;
+  font-size:13px;
   overflow:auto;
 }
+
 .flip-front{background:#1f2933}
+
 .flip-back{
   background:#374151;
   transform:rotateY(180deg);
 }
 
-/* Education */
-.edu-box{cursor:pointer}
-.edu-detail{display:none;margin-top:10px;color:#9ca3af}
+/* EDUCATION */
+.edu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
+}
+
+.edu-card{perspective:1000px}
+
+.edu-inner{
+  position:relative;
+  height:160px;
+  transform-style:preserve-3d;
+  transition:0.6s;
+}
+
+.edu-card:hover .edu-inner{
+  transform:rotateY(180deg);
+}
+
+.edu-front,.edu-back{
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:10px;
+  border:1px solid #374151;
+  padding:10px;
+  backface-visibility:hidden;
+  font-family:Segoe UI,sans-serif;
+  font-size:13px;
+  overflow:auto;
+}
+
+.edu-front{background:#1f2933}
+
+.edu-back{
+  background:#374151;
+  transform:rotateY(180deg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+}
 
 /* Skills */
 .skills{
@@ -108,97 +191,102 @@ li{
   gap:10px;
 }
 
-/* Links */
-a{color:#60a5fa;text-decoration:none}
-
 /* Contact */
 .contact{text-align:center}
+
+/* Mobile */
+@media(max-width:480px){
+  .name{font-size:22px}
+  .nav{font-size:10px}
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- TOP BAR -->
+<div class="topbar">
 
-<!-- HEADER -->
-<div class="header">
-<h1>Sashank Sahil</h1>
+<div class="name">Sashank Sahil</div>
+
+<div class="nav">
+<a href="#about">About</a> |
+<a href="#experience">Experience</a> |
+<a href="#projects">Projects</a> |
+<a href="#education">Education</a> |
+<a href="#skills">Skills</a> |
+<a href="#contact">Contact</a>
 </div>
 
+</div>
+
+<div class="container">
+
 <!-- ABOUT -->
-<div class="card about">
+<div class="card" id="about">
+<h2>About Me</h2>
 <p>
-I am Sashank, a Computer Science & Engineering graduate from Bharati Vidyapeeth Deemed to be University. I work as a Campaign Developer focused on data-driven marketing, customer segmentation, and campaign execution. My expertise includes Python, SQL, Power BI, and analytics, along with a strong foundation in artificial intelligence, machine learning, and natural language processing. I operate at the intersection of technology and marketing automation, delivering structured and insight-driven solutions.
+Computer Science graduate with experience in campaign development and marketing automation. Skilled in customer segmentation, multi-channel execution, and analytics. Proficient in Python, SQL, Power BI, and data-driven decision making with a strong base in AI, ML, and NLP. Experienced in Unica Campaign and Salesforce Marketing Cloud, focusing on structured execution, targeting logic, and performance tracking.
 </p>
 </div>
 
 <!-- EXPERIENCE -->
-<div class="grid-2">
+<div class="card" id="experience">
+<h2>Experience</h2>
 
-<div class="exp-box">
-<h3>Campaign Developer – RBL Bank, Mumbai</h3>
-<p>Dec 2025 – Present (Serving Notice Period)</p>
-<ul>
-<li>Multi-channel campaign execution</li>
-<li>Customer segmentation using CASA data</li>
-<li>Unica Campaign & Salesforce Marketing Cloud</li>
-<li>Email, SMS & call center targeting</li>
-<li>Cross-sell and upsell campaigns</li>
-<li>Compliance and data validation</li>
-</ul>
+<div class="exp-grid">
+
+<div>
+<h3>Campaign Developer – RBL Bank</h3>
+<div class="point-box">Multi-channel campaign execution</div>
+<div class="point-box">Customer segmentation using CASA</div>
+<div class="point-box">Unica & Salesforce Marketing Cloud</div>
+<div class="point-box">Email, SMS & campaigns</div>
+<div class="point-box">Cross-sell & upsell</div>
+<div class="point-box">Compliance & validation</div>
 </div>
 
-<div class="exp-box">
-<h3>Python Intern – Encryptix, Mumbai</h3>
-<p>July 2024 – August 2024</p>
-<ul>
-<li>To-do list, calculator, contact book</li>
-<li>Rock paper scissors game</li>
-<li>Python, SQL, Excel, GUI development</li>
-</ul>
+<div>
+<h3>Python Intern – Encryptix</h3>
+<div class="point-box">To-do list, calculator, contact book</div>
+<div class="point-box">Rock paper scissors game</div>
+<div class="point-box">Python, SQL, Excel, GUI</div>
 </div>
 
+</div>
 </div>
 
 <!-- PROJECTS -->
-<div class="card">
+<div class="card" id="projects">
 <h2>Projects</h2>
 
 <div class="projects">
 
 <div class="flip">
 <div class="flip-inner">
-<div class="flip-front">Crime Rate Prediction</div>
-<div class="flip-back">
-ML model predicting crime trends using location, time and type. Built using Random Forest, Pandas, Flask and Scikit-learn.
-</div>
-</div>
-</div>
-
-<div class="flip">
-<div class="flip-inner">
-<div class="flip-front">Discord Bot</div>
-<div class="flip-back">
-Server automation bot using discord.py with moderation, commands and real-time event handling.
-</div>
+<div class="flip-front"><b>Crime Prediction</b><br>Python • ML</div>
+<div class="flip-back">Machine learning model predicting crime trends.</div>
 </div>
 </div>
 
 <div class="flip">
 <div class="flip-inner">
-<div class="flip-front">Speech Translator</div>
-<div class="flip-back">
-Real-time voice translation app with GUI using Tkinter, SpeechRecognition and googletrans.
-</div>
+<div class="flip-front"><b>Discord Bot</b><br>Python</div>
+<div class="flip-back">Automation bot for server management.</div>
 </div>
 </div>
 
 <div class="flip">
 <div class="flip-inner">
-<div class="flip-front">Library Management System</div>
-<div class="flip-back">
-Database-driven system using MySQL and Python to manage books, users and transactions.
+<div class="flip-front"><b>Translator</b><br>Python • GUI</div>
+<div class="flip-back">Speech-to-text translation system.</div>
 </div>
+</div>
+
+<div class="flip">
+<div class="flip-inner">
+<div class="flip-front"><b>Library System</b><br>Python • MySQL</div>
+<div class="flip-back">Database-based management system.</div>
 </div>
 </div>
 
@@ -206,27 +294,39 @@ Database-driven system using MySQL and Python to manage books, users and transac
 </div>
 
 <!-- EDUCATION -->
-<div class="card">
+<div class="card" id="education">
 <h2>Education</h2>
 
-<div class="grid-2">
+<div class="edu-grid">
 
-<div>
-<div class="edu-box" onclick="toggle(this)">
-B.Tech CSE
-<div class="edu-detail">CGPA: 8.12</div>
+<div class="edu-card">
+<div class="edu-inner">
+<div class="edu-front">
+B.TECH CSE<br>
+Bharati Vidyapeeth University<br>
+DET Navi Mumbai (2021-2025)
+</div>
+<div class="edu-back">Score: 8.12 CGPA</div>
+</div>
 </div>
 
-<div class="edu-box" onclick="toggle(this)">
-SSC
-<div class="edu-detail">75%</div>
+<div class="edu-card">
+<div class="edu-inner">
+<div class="edu-front">
+12TH/HSC<br>
+KV No. II Port Blair (2021)
+</div>
+<div class="edu-back">Score: 85.4%</div>
 </div>
 </div>
 
-<div>
-<div class="edu-box" onclick="toggle(this)">
-HSC
-<div class="edu-detail">85.4%</div>
+<div class="edu-card">
+<div class="edu-inner">
+<div class="edu-front">
+10TH/SSC<br>
+KV Anna Nagar Chennai (2019)
+</div>
+<div class="edu-back">Score: 75%</div>
 </div>
 </div>
 
@@ -234,8 +334,8 @@ HSC
 </div>
 
 <!-- SKILLS -->
-<div class="card">
-<h2>Key Skills</h2>
+<div class="card" id="skills">
+<h2>Skills</h2>
 
 <div class="skills">
 <ul>
@@ -243,10 +343,10 @@ HSC
 <li>Salesforce Marketing Cloud</li>
 <li>Python</li>
 <li>SQL</li>
+<li>Power BI</li>
 </ul>
 
 <ul>
-<li>Power BI</li>
 <li>Excel</li>
 <li>Problem Solving</li>
 <li>Adaptability</li>
@@ -259,44 +359,35 @@ HSC
 
 <!-- CERTIFICATIONS -->
 <div class="card">
-<h2>Training & Certification</h2>
+<h2>Certifications</h2>
 <ul>
 <li>Unica & Salesforce Marketing Cloud</li>
-<li>Deep Learning (Udemy)</li>
-<li>Python Bootcamp (Udemy)</li>
-<li>Android Kotlin (IIT Bombay)</li>
-<li>Cyber Security (HCL)</li>
+<li>Deep Learning</li>
+<li>Python Bootcamp</li>
+<li>Android Kotlin</li>
+<li>Cyber Security</li>
 </ul>
 </div>
 
 <!-- ACTIVITIES -->
 <div class="card">
 <h2>Activities</h2>
-<ul>
-<li>Conducted 3-day workshop on Problem Solving Using Python</li>
-</ul>
+<p>Conducted 3-day workshop on Problem Solving Using Python</p>
 </div>
 
 <!-- CONTACT -->
-<div class="card contact">
+<div class="card contact" id="contact">
 <h2>Contact</h2>
 <p>📩 sahilsashank58@gmail.com</p>
 <p>
-<a href="https://www.linkedin.com/in/iamsashanksahil" target="_blank">LinkedIn</a> |
-<a href="https://github.com/iamsashanksahil" target="_blank">GitHub</a> |
-<a href="https://drive.google.com/file/d/1xMkNKmHqiQkLQyAIlwXmOeyuhMZPsLOf/view" target="_blank">Resume</a>
+<a href="https://www.linkedin.com/in/iamsashanksahil">LinkedIn</a> |
+<a href="https://github.com/iamsashanksahil">GitHub</a> |
+<a href="https://drive.google.com/file/d/1xMkNKmHqiQkLQyAIlwXmOeyuhMZPsLOf/view">Resume</a>
 </p>
-<p>📍 Powai, Mumbai, Maharashtra</p>
+<p>📍 Powai, Mumbai</p>
 </div>
 
 </div>
-
-<script>
-function toggle(el){
-  let d = el.querySelector(".edu-detail");
-  d.style.display = d.style.display === "block" ? "none" : "block";
-}
-</script>
 
 </body>
 </html>
