@@ -7,94 +7,111 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI, sans-serif}
-body{background:#0f172a;color:#e2e8f0;line-height:1.6}
 
-/* Layout */
-.container{max-width:1100px;margin:auto;padding:20px}
+body{
+  background:#111827;
+  color:#e5e7eb;
+  line-height:1.6;
+}
 
-/* Card */
-.card{
-    background:#1e293b;
-    border-radius:14px;
-    padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+/* Boxes */
+.card, .exp-box, .edu-box{
+  background:#1f2933;
+  border:1px solid #374151;
+  border-radius:12px;
+  padding:18px;
+  margin-bottom:20px;
+  overflow:hidden;
 }
 
 /* Header */
 .header{
-    text-align:center;
-    padding:30px 20px;
-    background:linear-gradient(135deg,#2563eb,#06b6d4);
-    border-radius:14px;
-    margin-bottom:20px;
+  text-align:center;
+  padding:30px;
+  background:#1f2933;
+  border:1px solid #374151;
+  border-radius:12px;
+  margin-bottom:20px;
 }
-.header h1{font-size:32px;color:white}
 
 /* About */
-.about{border-left:5px solid #38bdf8}
+.about{
+  border-left:4px solid #6b7280;
+}
 
-/* Two column */
+/* Grid */
 .grid-2{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
 }
 @media(max-width:768px){
-    .grid-2{grid-template-columns:1fr}
+  .grid-2{grid-template-columns:1fr}
 }
 
-/* Experience */
-.exp-box{background:#334155;padding:15px;border-radius:10px}
+/* Lists */
+ul{
+  padding-left:18px;
+  margin-top:10px;
+}
+li{
+  margin-bottom:6px;
+  word-wrap:break-word;
+}
 
-/* Projects flip */
+/* Projects */
 .projects{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
 }
-.flip{
-    perspective:1000px;
-}
+.flip{perspective:1000px}
 .flip-inner{
-    position:relative;
-    width:100%;
-    height:260px;
-    transition:transform 0.6s;
-    transform-style:preserve-3d;
+  position:relative;
+  width:100%;
+  height:260px;
+  transition:transform 0.6s;
+  transform-style:preserve-3d;
 }
 .flip:hover .flip-inner{transform:rotateY(180deg)}
 
 .flip-front, .flip-back{
-    position:absolute;
-    width:100%;
-    height:100%;
-    backface-visibility:hidden;
-    border-radius:10px;
-    padding:15px;
+  position:absolute;
+  width:100%;
+  height:100%;
+  backface-visibility:hidden;
+  border-radius:10px;
+  padding:15px;
+  border:1px solid #374151;
+  overflow:auto;
 }
-.flip-front{background:#1e293b}
+.flip-front{background:#1f2933}
 .flip-back{
-    background:#2563eb;
-    transform:rotateY(180deg);
-    overflow:auto;
+  background:#374151;
+  transform:rotateY(180deg);
 }
 
-/* Education clickable */
-.edu-box{cursor:pointer;background:#334155;padding:15px;border-radius:10px}
-.edu-detail{display:none;margin-top:10px;color:#38bdf8}
+/* Education */
+.edu-box{cursor:pointer}
+.edu-detail{display:none;margin-top:10px;color:#9ca3af}
 
 /* Skills */
 .skills{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
 
 /* Links */
-a{color:#38bdf8;text-decoration:none}
+a{color:#60a5fa;text-decoration:none}
 
-/* Footer */
+/* Contact */
 .contact{text-align:center}
 </style>
 </head>
@@ -105,52 +122,55 @@ a{color:#38bdf8;text-decoration:none}
 
 <!-- HEADER -->
 <div class="header">
-    <h1>Sashank Sahil</h1>
+<h1>Sashank Sahil</h1>
 </div>
 
 <!-- ABOUT -->
 <div class="card about">
 <p>
-I am Sashank, a Computer Science & Engineering graduate from Bharati Vidyapeeth Deemed to be University, Department of Engineering & Technology. I work as a Campaign Developer focused on data-driven marketing, customer segmentation, and campaign execution. My expertise includes Python, SQL, Power BI, and analytics, along with a strong foundation in artificial intelligence, machine learning, and natural language processing. I operate at the intersection of technology and marketing automation, delivering structured, insight-driven solutions.
+I am Sashank, a Computer Science & Engineering graduate from Bharati Vidyapeeth Deemed to be University. I work as a Campaign Developer focused on data-driven marketing, customer segmentation, and campaign execution. My expertise includes Python, SQL, Power BI, and analytics, along with a strong foundation in artificial intelligence, machine learning, and natural language processing. I operate at the intersection of technology and marketing automation, delivering structured and insight-driven solutions.
 </p>
 </div>
 
 <!-- EXPERIENCE -->
 <div class="grid-2">
+
 <div class="exp-box">
-<h3>Campaign Developer – RBL Bank</h3>
-<p>Dec 2025 – Present</p>
+<h3>Campaign Developer – RBL Bank, Mumbai</h3>
+<p>Dec 2025 – Present (Serving Notice Period)</p>
 <ul>
 <li>Multi-channel campaign execution</li>
-<li>Customer segmentation (CASA)</li>
-<li>Unica & Salesforce Marketing Cloud</li>
-<li>Campaign targeting & validation</li>
-<li>Cross-sell / upsell campaigns</li>
-<li>Compliance & data privacy</li>
+<li>Customer segmentation using CASA data</li>
+<li>Unica Campaign & Salesforce Marketing Cloud</li>
+<li>Email, SMS & call center targeting</li>
+<li>Cross-sell and upsell campaigns</li>
+<li>Compliance and data validation</li>
 </ul>
 </div>
 
 <div class="exp-box">
-<h3>Python Intern – Encryptix</h3>
-<p>July 2024 – Aug 2024</p>
+<h3>Python Intern – Encryptix, Mumbai</h3>
+<p>July 2024 – August 2024</p>
 <ul>
-<li>To-do app, calculator, contact book</li>
-<li>Rock-paper-scissors game</li>
-<li>Python, SQL, Excel, GUI</li>
+<li>To-do list, calculator, contact book</li>
+<li>Rock paper scissors game</li>
+<li>Python, SQL, Excel, GUI development</li>
 </ul>
 </div>
+
 </div>
 
 <!-- PROJECTS -->
 <div class="card">
 <h2>Projects</h2>
+
 <div class="projects">
 
 <div class="flip">
 <div class="flip-inner">
 <div class="flip-front">Crime Rate Prediction</div>
 <div class="flip-back">
-Machine learning model predicting crime trends using location, time, and type. Built with Random Forest, Flask, Pandas, and Scikit-learn.
+ML model predicting crime trends using location, time and type. Built using Random Forest, Pandas, Flask and Scikit-learn.
 </div>
 </div>
 </div>
@@ -159,7 +179,7 @@ Machine learning model predicting crime trends using location, time, and type. B
 <div class="flip-inner">
 <div class="flip-front">Discord Bot</div>
 <div class="flip-back">
-Automated server bot using discord.py with moderation, commands, and event handling.
+Server automation bot using discord.py with moderation, commands and real-time event handling.
 </div>
 </div>
 </div>
@@ -168,16 +188,16 @@ Automated server bot using discord.py with moderation, commands, and event handl
 <div class="flip-inner">
 <div class="flip-front">Speech Translator</div>
 <div class="flip-back">
-Real-time speech translation with GUI using Tkinter, SpeechRecognition, and googletrans.
+Real-time voice translation app with GUI using Tkinter, SpeechRecognition and googletrans.
 </div>
 </div>
 </div>
 
 <div class="flip">
 <div class="flip-inner">
-<div class="flip-front">Library System</div>
+<div class="flip-front">Library Management System</div>
 <div class="flip-back">
-MySQL-based system managing books, users, and transactions with Python integration.
+Database-driven system using MySQL and Python to manage books, users and transactions.
 </div>
 </div>
 </div>
@@ -216,14 +236,25 @@ HSC
 <!-- SKILLS -->
 <div class="card">
 <h2>Key Skills</h2>
+
 <div class="skills">
-<div>Unica Campaign, SFMC</div>
-<div>Python, SQL, Power BI, Excel</div>
-<div>Problem Solving</div>
-<div>Adaptability</div>
-<div>Time Management</div>
-<div>Teamwork & Leadership</div>
+<ul>
+<li>Unica Campaign</li>
+<li>Salesforce Marketing Cloud</li>
+<li>Python</li>
+<li>SQL</li>
+</ul>
+
+<ul>
+<li>Power BI</li>
+<li>Excel</li>
+<li>Problem Solving</li>
+<li>Adaptability</li>
+<li>Time Management</li>
+<li>Teamwork & Leadership</li>
+</ul>
 </div>
+
 </div>
 
 <!-- CERTIFICATIONS -->
@@ -255,15 +286,15 @@ HSC
 <a href="https://github.com/iamsashanksahil" target="_blank">GitHub</a> |
 <a href="https://drive.google.com/file/d/1xMkNKmHqiQkLQyAIlwXmOeyuhMZPsLOf/view" target="_blank">Resume</a>
 </p>
-<p>📍 Powai, Mumbai</p>
+<p>📍 Powai, Mumbai, Maharashtra</p>
 </div>
 
 </div>
 
 <script>
 function toggle(el){
-    let detail = el.querySelector(".edu-detail");
-    detail.style.display = detail.style.display === "block" ? "none" : "block";
+  let d = el.querySelector(".edu-detail");
+  d.style.display = d.style.display === "block" ? "none" : "block";
 }
 </script>
 
