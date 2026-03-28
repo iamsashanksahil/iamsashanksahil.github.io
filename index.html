@@ -9,13 +9,12 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
 html,body{overflow-x:hidden}
 
 body{
   background:#111827;
   color:#e5e7eb;
-  font-family:'Lorimer No 2',sans-serif;
+  font-family:system-ui, -apple-system, Segoe UI, Roboto, sans-serif; /* default font */
 }
 
 /* TOP BAR */
@@ -35,6 +34,7 @@ body{
 .name{
   font-size:28px;
   font-weight:bold;
+  font-family:'Lorimer No 2',sans-serif;
 }
 
 /* NAV */
@@ -49,8 +49,27 @@ body{
 }
 
 .nav a{
-  color:#60a5fa;
+  color:#e5e7eb;
   text-decoration:none;
+  position:relative;
+}
+
+/* custom link style */
+.nav a::after,
+a.link::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-2px;
+  width:100%;
+  height:1px;
+  background:#6b7280;
+  transition:0.3s;
+}
+
+.nav a:hover::after,
+a.link:hover::after{
+  background:#e5e7eb;
 }
 
 /* Container */
@@ -58,6 +77,12 @@ body{
   max-width:1100px;
   margin:auto;
   padding:80px 15px 20px;
+}
+
+/* Section Titles */
+h2{
+  font-family:'Lorimer No 2',sans-serif;
+  margin-bottom:10px;
 }
 
 /* Cards */
@@ -117,9 +142,7 @@ ul{
   transition:0.6s;
 }
 
-.flip:hover .flip-inner{
-  transform:rotateY(180deg);
-}
+.flip:hover .flip-inner{transform:rotateY(180deg)}
 
 .flip-front,.flip-back{
   position:absolute;
@@ -134,7 +157,6 @@ ul{
 }
 
 .flip-front{background:#1f2933}
-
 .flip-back{
   background:#374151;
   transform:rotateY(180deg);
@@ -156,9 +178,7 @@ ul{
   transition:0.6s;
 }
 
-.edu-card:hover .edu-inner{
-  transform:rotateY(180deg);
-}
+.edu-card:hover .edu-inner{transform:rotateY(180deg)}
 
 .edu-front,.edu-back{
   position:absolute;
@@ -168,13 +188,12 @@ ul{
   border:1px solid #374151;
   padding:10px;
   backface-visibility:hidden;
-  font-family:Segoe UI,sans-serif;
+  font-family:system-ui;
   font-size:13px;
   overflow:auto;
 }
 
 .edu-front{background:#1f2933}
-
 .edu-back{
   background:#374151;
   transform:rotateY(180deg);
@@ -189,6 +208,13 @@ ul{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:10px;
+}
+
+/* Links (global) */
+a.link{
+  color:#e5e7eb;
+  text-decoration:none;
+  position:relative;
 }
 
 /* Contact */
@@ -380,9 +406,9 @@ KV Anna Nagar Chennai (2019)
 <h2>Contact</h2>
 <p>📩 sahilsashank58@gmail.com</p>
 <p>
-<a href="https://www.linkedin.com/in/iamsashanksahil">LinkedIn</a> |
-<a href="https://github.com/iamsashanksahil">GitHub</a> |
-<a href="https://drive.google.com/file/d/1xMkNKmHqiQkLQyAIlwXmOeyuhMZPsLOf/view">Resume</a>
+<a class="link" href="https://www.linkedin.com/in/iamsashanksahil">LinkedIn</a> |
+<a class="link" href="https://github.com/iamsashanksahil">GitHub</a> |
+<a class="link" href="https://drive.google.com/file/d/1xMkNKmHqiQkLQyAIlwXmOeyuhMZPsLOf/view">Resume</a>
 </p>
 <p>📍 Powai, Mumbai</p>
 </div>
