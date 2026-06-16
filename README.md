@@ -1,4 +1,4 @@
-# Personal Portfolio Website
+# Personal Portfolio Website 
 
 A modern, responsive portfolio website built to showcase my background, technical skills, projects, certifications, and professional experience as an aspiring **Data Analyst & AI/ML enthusiast**.
 
